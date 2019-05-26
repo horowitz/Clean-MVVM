@@ -11,7 +11,6 @@ class ProductsMapperImplTest {
     private val productsMapper = ProductsMapperImpl()
     private val productsDto = Gson().fromJson(STORE_MOCK_RESPONSE, ProductsDto::class.java)
 
-
     @Test
     fun `should map products dto's into domain entities`() {
         val expected = listOf(
@@ -23,5 +22,11 @@ class ProductsMapperImplTest {
         val actual = productsMapper.mapToDomain(productsDto)
 
         assertEquals(actual, expected)
+    }
+
+    @Test(expected = IllegalArgumentException::class)
+    fun `should error when products array is missing`(){
+        val dto = ProductsDto(null)
+        productsMapper.mapToDomain(dto)
     }
 }

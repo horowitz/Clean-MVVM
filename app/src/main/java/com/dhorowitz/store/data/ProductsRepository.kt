@@ -3,9 +3,9 @@ package com.dhorowitz.store.data
 import io.reactivex.Single
 
 interface ProductsRepository {
-    fun fetchProducts(): Single<List<ProductDto>>
+    fun fetchProducts(): Single<ProductsDto>
 }
 
 class ProductsRepositoryImpl(private val storeApi: StoreApi) : ProductsRepository {
-    override fun fetchProducts(): Single<List<ProductDto>> = storeApi.getProducts()
+    override fun fetchProducts(): Single<ProductsDto> = storeApi.getProducts()
 }

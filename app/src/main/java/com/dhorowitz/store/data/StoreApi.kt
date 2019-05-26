@@ -5,5 +5,5 @@ import retrofit2.http.GET
 
 interface StoreApi {
     @GET("/bins/4bwec")
-    fun getProducts(): Single<List<ProductDto>>
+    fun getProducts(): Single<ProductsDto>
 }
