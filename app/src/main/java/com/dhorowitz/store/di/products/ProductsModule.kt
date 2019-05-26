@@ -6,6 +6,7 @@ import com.dhorowitz.store.di.PerActivity
 import com.dhorowitz.store.domain.ProductsInteractor
 import com.dhorowitz.store.domain.ProductsInteractorImpl
 import com.dhorowitz.store.domain.ProductsMapper
+import com.dhorowitz.store.domain.ProductsMapperImpl
 import com.dhorowitz.store.presentation.ProductsActivity
 import dagger.Binds
 import dagger.Module
@@ -22,7 +23,7 @@ abstract class ProductsModule {
         @Provides
         @PerActivity
         @JvmStatic
-        internal fun provideMapper(): ProductsMapper = ProductsMapper()
+        internal fun provideMapper(): ProductsMapper = ProductsMapperImpl()
 
         @Provides
         @PerActivity
