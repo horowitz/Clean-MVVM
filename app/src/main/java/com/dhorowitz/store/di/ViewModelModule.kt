@@ -33,7 +33,7 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(ProductsViewModel::class)
-    internal abstract fun postListViewModel(viewModel: ProductsViewModel): ViewModel
+    internal abstract fun productsViewModel(viewModel: ProductsViewModel): ViewModel
 
     //Add more ViewModels here
 }

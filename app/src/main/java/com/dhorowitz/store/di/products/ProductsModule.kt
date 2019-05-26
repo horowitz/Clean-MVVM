@@ -2,7 +2,8 @@ package com.dhorowitz.store.di.products
 
 import android.app.Activity
 import com.dhorowitz.store.data.ProductsRepository
-import com.dhorowitz.store.di.PerActivity
+import com.dhorowitz.store.data.ProductsRepositoryImpl
+import com.dhorowitz.store.data.StoreApi
 import com.dhorowitz.store.domain.ProductsInteractor
 import com.dhorowitz.store.domain.ProductsInteractorImpl
 import com.dhorowitz.store.domain.ProductsMapper
@@ -15,18 +16,19 @@ import dagger.Provides
 @Module
 abstract class ProductsModule {
     @Binds
-    @PerActivity
     internal abstract fun provideActivity(activity: ProductsActivity): Activity
 
     @Module
     companion object {
         @Provides
-        @PerActivity
         @JvmStatic
         internal fun provideMapper(): ProductsMapper = ProductsMapperImpl()
 
         @Provides
-        @PerActivity
+        @JvmStatic
+        internal fun provideRepository(storeApi: StoreApi): ProductsRepository = ProductsRepositoryImpl(storeApi)
+
+        @Provides
         @JvmStatic
         internal fun provideInteractor(productsRepository: ProductsRepository, productsMapper: ProductsMapper):
                 ProductsInteractor = ProductsInteractorImpl(productsRepository, productsMapper)

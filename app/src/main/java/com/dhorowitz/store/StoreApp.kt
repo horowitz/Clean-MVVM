@@ -13,12 +13,12 @@ class StoreApp : Application(), HasActivityInjector {
     @Inject
     lateinit var dispatchingActivityInjector: DispatchingAndroidInjector<Activity>
 
+    override fun activityInjector(): AndroidInjector<Activity> = dispatchingActivityInjector
+
     override fun onCreate() {
         super.onCreate()
 
         DaggerApplicationComponent.create()
             .inject(this)
     }
-
-    override fun activityInjector(): AndroidInjector<Activity> = dispatchingActivityInjector
 }

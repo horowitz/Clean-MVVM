@@ -15,10 +15,10 @@ private const val BASE_URL = "https://api.myjson.com"
 class NetworkModule {
 
     @Provides
-    fun providesStoreApi(retrofit: Retrofit) = retrofit.create(StoreApi::class.java)
+    fun providesStoreApi(retrofit: Retrofit): StoreApi = retrofit.create(StoreApi::class.java)
 
     @Provides
-    fun providesRetrofit(okHttpClient: OkHttpClient) =
+    fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
