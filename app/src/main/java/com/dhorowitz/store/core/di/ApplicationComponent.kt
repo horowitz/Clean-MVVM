@@ -1,8 +1,8 @@
-package com.dhorowitz.store.di
+package com.dhorowitz.store.core.di
 
-import com.dhorowitz.store.StoreApp
-import com.dhorowitz.store.di.products.ProductsActivityModule
-import com.dhorowitz.store.di.products.ProductsModule
+import com.dhorowitz.store.core.StoreApp
+import com.dhorowitz.store.core.di.products.ProductsActivityModule
+import com.dhorowitz.store.core.di.products.ProductsModule
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton

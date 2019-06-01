@@ -1,8 +1,8 @@
 package com.dhorowitz.store.presentation
 
 import androidx.lifecycle.ViewModel
-import com.dhorowitz.store.di.IO_SCHEDULER
-import com.dhorowitz.store.di.MAIN_THREAD_SCHEDULER
+import com.dhorowitz.store.core.di.IO_SCHEDULER
+import com.dhorowitz.store.core.di.MAIN_THREAD_SCHEDULER
 import com.dhorowitz.store.domain.ProductsInteractor
 import io.reactivex.Scheduler
 import javax.inject.Inject

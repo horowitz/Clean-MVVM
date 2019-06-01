@@ -1,4 +1,4 @@
-package com.dhorowitz.store.di
+package com.dhorowitz.store.core.di
 
 import com.dhorowitz.store.data.StoreApi
 import dagger.Module

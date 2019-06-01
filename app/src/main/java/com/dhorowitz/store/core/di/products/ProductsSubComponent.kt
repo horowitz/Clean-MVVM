@@ -1,7 +1,7 @@
-package com.dhorowitz.store.di.products
+package com.dhorowitz.store.core.di.products
 
 import android.app.Activity
-import com.dhorowitz.store.di.ActivityModule
+import com.dhorowitz.store.core.di.ActivityModule
 import com.dhorowitz.store.presentation.ProductsActivity
 import dagger.Binds
 import dagger.Module

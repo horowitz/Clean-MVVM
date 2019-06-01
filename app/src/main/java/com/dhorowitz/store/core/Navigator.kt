@@ -1,4 +1,4 @@
-package com.dhorowitz.store
+package com.dhorowitz.store.core
 
 import android.app.Activity
 

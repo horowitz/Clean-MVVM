@@ -1,4 +1,4 @@
-package com.dhorowitz.store.di.products
+package com.dhorowitz.store.core.di.products
 
 import android.app.Activity
 import com.dhorowitz.store.data.ProductsRepository
