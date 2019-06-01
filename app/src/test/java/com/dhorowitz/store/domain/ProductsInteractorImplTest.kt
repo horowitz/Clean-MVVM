@@ -7,11 +7,11 @@ import com.dhorowitz.store.mock.STORE_MOCK_RESPONSE
 import com.google.gson.Gson
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Single
+import io.reactivex.schedulers.Schedulers.trampoline
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
-import java.lang.Exception
 
 class ProductsInteractorImplTest {
     @Mock
@@ -20,7 +20,7 @@ class ProductsInteractorImplTest {
     @Mock
     lateinit var mapper: ProductsMapper
 
-    private val interactor by lazy { ProductsInteractorImpl(repository, mapper) }
+    private val interactor by lazy { ProductsInteractorImpl(repository, mapper, trampoline(), trampoline()) }
     private val productsDto = Gson().fromJson(STORE_MOCK_RESPONSE, ProductsDto::class.java)
 
     @Before
@@ -44,7 +44,7 @@ class ProductsInteractorImplTest {
     }
 
     @Test
-    fun `should return error when product fetch fails`(){
+    fun `should return error when product fetch fails`() {
         val exception = Exception()
         givenProductsMappedCorrectly()
         givenProductsFetchFails(exception)
