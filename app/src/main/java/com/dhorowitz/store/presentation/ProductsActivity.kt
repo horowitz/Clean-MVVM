@@ -3,11 +3,11 @@ package com.dhorowitz.store.presentation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.dhorowitz.store.R
+import com.dhorowitz.store.core.extension.failure
+import com.dhorowitz.store.core.extension.observe
 import com.dhorowitz.store.core.extension.viewModel
 import dagger.android.AndroidInjection
-import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 class ProductsActivity : AppCompatActivity() {
@@ -20,8 +20,19 @@ class ProductsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         AndroidInjection.inject(this)
         setContentView(R.layout.activity_main)
-        viewModel = viewModel(viewModelFactory){
-
+        viewModel = viewModel(viewModelFactory) {
+            observe(products, ::updateProducts)
+            failure(failure, ::showError)
         }
+
+        viewModel.loadProducts()
+    }
+
+    private fun showError(failure: Throwable?) {
+        
+    }
+
+    private fun updateProducts(products: List<ProductViewEntity>?) {
+
     }
 }
