@@ -1,17 +1,31 @@
 package com.dhorowitz.store.presentation
 
-import androidx.lifecycle.ViewModel
-import com.dhorowitz.store.core.di.IO_SCHEDULER
-import com.dhorowitz.store.core.di.MAIN_THREAD_SCHEDULER
+import androidx.lifecycle.MutableLiveData
+import com.dhorowitz.store.core.BaseViewModel
+import com.dhorowitz.store.core.ProductsMapper
 import com.dhorowitz.store.domain.ProductsInteractor
-import io.reactivex.Scheduler
+import io.reactivex.rxkotlin.subscribeBy
 import javax.inject.Inject
-import javax.inject.Named
 
 class ProductsViewModel @Inject constructor(
     private val productsInteractor: ProductsInteractor,
-    @Named(IO_SCHEDULER) private val subscribeOn: Scheduler,
-    @Named(MAIN_THREAD_SCHEDULER) private val observeOn: Scheduler
-) : ViewModel() {
+    private val productsMapper: ProductsMapper
+) : BaseViewModel() {
+
+    val products = MutableLiveData<List<ProductViewEntity>>()
+
+    fun loadProducts() {
+        disposable = productsInteractor.fetchProducts()
+            .map { productsMapper.mapToPresentation(it) }
+            .subscribeBy(
+                onSuccess = { handleProductsList(it) },
+                onError = { handleFailure(it) }
+            )
+
+    }
+
+    private fun handleProductsList(products: List<ProductViewEntity>?) {
+        this.products.postValue(products)
+    }
 
 }

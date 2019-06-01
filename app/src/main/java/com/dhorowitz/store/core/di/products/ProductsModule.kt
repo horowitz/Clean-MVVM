@@ -8,8 +8,8 @@ import com.dhorowitz.store.data.ProductsRepositoryImpl
 import com.dhorowitz.store.data.StoreApi
 import com.dhorowitz.store.domain.ProductsInteractor
 import com.dhorowitz.store.domain.ProductsInteractorImpl
-import com.dhorowitz.store.domain.ProductsMapper
-import com.dhorowitz.store.domain.ProductsMapperImpl
+import com.dhorowitz.store.core.ProductsMapper
+import com.dhorowitz.store.core.ProductsMapperImpl
 import com.dhorowitz.store.presentation.ProductsActivity
 import dagger.Binds
 import dagger.Module
@@ -26,7 +26,8 @@ abstract class ProductsModule {
     companion object {
         @Provides
         @JvmStatic
-        internal fun provideMapper(): ProductsMapper = ProductsMapperImpl()
+        internal fun provideMapper(): ProductsMapper =
+            ProductsMapperImpl()
 
         @Provides
         @JvmStatic

@@ -1,5 +1,6 @@
 package com.dhorowitz.store.domain
 
+import com.dhorowitz.store.core.ProductsMapper
 import com.dhorowitz.store.data.ProductsDto
 import com.dhorowitz.store.data.ProductsRepository
 import com.dhorowitz.store.domain.model.ProductDomainEntity

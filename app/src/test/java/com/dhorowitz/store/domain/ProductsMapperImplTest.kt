@@ -1,5 +1,6 @@
 package com.dhorowitz.store.domain
 
+import com.dhorowitz.store.core.ProductsMapperImpl
 import com.dhorowitz.store.data.ProductsDto
 import com.dhorowitz.store.domain.model.ProductDomainEntity
 import com.dhorowitz.store.mock.STORE_MOCK_RESPONSE

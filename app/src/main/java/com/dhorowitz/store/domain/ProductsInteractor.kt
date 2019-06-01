@@ -1,5 +1,6 @@
 package com.dhorowitz.store.domain
 
+import com.dhorowitz.store.core.ProductsMapper
 import com.dhorowitz.store.core.di.IO_SCHEDULER
 import com.dhorowitz.store.core.di.MAIN_THREAD_SCHEDULER
 import com.dhorowitz.store.data.ProductsRepository
