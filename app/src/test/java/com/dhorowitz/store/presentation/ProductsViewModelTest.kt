@@ -3,11 +3,14 @@ package com.dhorowitz.store.presentation
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.dhorowitz.store.domain.ProductsInteractor
 import com.dhorowitz.store.domain.ProductsPresentationMapper
+import com.dhorowitz.store.presentation.product.ProductType
+import com.dhorowitz.store.presentation.product.ProductType.*
 import com.dhorowitz.store.presentation.product.ProductViewEntity
 import com.dhorowitz.store.presentation.product.ProductsViewModel
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Single
+import org.amshove.kluent.`should equal`
 import org.amshove.kluent.shouldEqualTo
 import org.junit.Before
 import org.junit.Rule
@@ -35,10 +38,11 @@ class ProductsViewModelTest {
 
     @Test
     fun `should load products given interactor fetched successfully`() {
-        val code = "code"
+        val code = Unknown
         val name = "name"
+        val price = 10.0
         val formattedPrice = "€10.00"
-        val products = listOf(ProductViewEntity(code, name, formattedPrice))
+        val products = listOf(ProductViewEntity(code, name, price, formattedPrice))
 
         givenInteractorFetchedSuccessfully()
         givenProductsMappedCorrectly(products)
@@ -48,7 +52,7 @@ class ProductsViewModelTest {
         viewModel.products.observeForever {
             with(it) {
                 size shouldEqualTo 1
-                first().code shouldEqualTo code
+                first().code `should equal`  Unknown
                 first().name shouldEqualTo name
                 first().formattedPrice shouldEqualTo formattedPrice
             }

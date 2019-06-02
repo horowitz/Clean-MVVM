@@ -1,20 +1,30 @@
 package com.dhorowitz.store.domain
 
+import com.dhorowitz.store.core.extension.priceFormat
 import com.dhorowitz.store.domain.model.ProductDomainEntity
+import com.dhorowitz.store.presentation.product.ProductType
+import com.dhorowitz.store.presentation.product.ProductType.*
 import com.dhorowitz.store.presentation.product.ProductViewEntity
 import java.text.NumberFormat
 import java.util.*
 
-class ProductsPresentationMapper {
-    fun mapToPresentation(domainEntities: List<ProductDomainEntity>): List<ProductViewEntity> =
+open class ProductsPresentationMapper {
+    open fun mapToPresentation(domainEntities: List<ProductDomainEntity>): List<ProductViewEntity> =
         domainEntities.map {
             ProductViewEntity(
-                it.code,
+                codeToType(it.code),
                 it.name,
-                formatPrice(it.price)
+                it.price,
+                it.price.priceFormat()
             )
         }
 
-    private fun formatPrice(price: Double): String = NumberFormat.getCurrencyInstance(Locale("es", "ES")).format(price)
+    private fun codeToType(code: String): ProductType = when (code.toLowerCase()) {
+        "voucher" -> Voucher
+        "tshirt" -> TShirt
+        "mug" -> Mug
+        else -> Unknown
+    }
+
 
 }

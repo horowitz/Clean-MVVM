@@ -4,6 +4,7 @@ import com.dhorowitz.store.data.ProductsDomainMapper
 import com.dhorowitz.store.data.ProductsDto
 import com.dhorowitz.store.domain.model.ProductDomainEntity
 import com.dhorowitz.store.mock.STORE_MOCK_RESPONSE
+import com.dhorowitz.store.presentation.product.ProductType.*
 import com.dhorowitz.store.presentation.product.ProductViewEntity
 import com.google.gson.Gson
 import org.junit.Assert.assertEquals
@@ -22,25 +23,6 @@ class ProductsDomainMapperTest {
         )
 
         val actual = productsMapper.mapToDomain(productsDto)
-
-        assertEquals(actual, expected)
-    }
-
-    @Test
-    fun `should product domain entities into presentation`() {
-        val domainEntities = listOf(
-            ProductDomainEntity("VOUCHER", "Cabify Voucher", 5.0),
-            ProductDomainEntity("TSHIRT", "Cabify T-Shirt", 20.0),
-            ProductDomainEntity("MUG", "Cabify Coffee Mug", 7.5)
-        )
-
-        val expected = listOf(
-            ProductViewEntity("VOUCHER", "Cabify Voucher", "5,00 €"),
-            ProductViewEntity("TSHIRT", "Cabify T-Shirt", "20,00 €"),
-            ProductViewEntity("MUG", "Cabify Coffee Mug", "7,50 €")
-        )
-
-        val actual = productsMapper.mapToPresentation(domainEntities)
 
         assertEquals(actual, expected)
     }

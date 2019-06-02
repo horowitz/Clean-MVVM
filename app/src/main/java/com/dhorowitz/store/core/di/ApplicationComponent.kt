@@ -1,6 +1,7 @@
 package com.dhorowitz.store.core.di
 
 import com.dhorowitz.store.core.StoreApp
+import com.dhorowitz.store.core.di.checkout.CheckoutModule
 import com.dhorowitz.store.core.di.products.ProductsActivityModule
 import com.dhorowitz.store.core.di.products.ProductsModule
 import dagger.Component

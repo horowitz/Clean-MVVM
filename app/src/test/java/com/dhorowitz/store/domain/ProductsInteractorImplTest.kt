@@ -1,6 +1,6 @@
 package com.dhorowitz.store.domain
 
-import com.dhorowitz.store.core.ProductsMapper
+import com.dhorowitz.store.data.ProductsDomainMapper
 import com.dhorowitz.store.data.ProductsDto
 import com.dhorowitz.store.data.ProductsRepository
 import com.dhorowitz.store.domain.model.ProductDomainEntity
@@ -19,7 +19,7 @@ class ProductsInteractorImplTest {
     lateinit var repository: ProductsRepository
 
     @Mock
-    lateinit var mapper: ProductsMapper
+    lateinit var mapper: ProductsDomainMapper
 
     private val interactor by lazy { ProductsInteractorImpl(repository, mapper, trampoline(), trampoline()) }
     private val productsDto = Gson().fromJson(STORE_MOCK_RESPONSE, ProductsDto::class.java)
