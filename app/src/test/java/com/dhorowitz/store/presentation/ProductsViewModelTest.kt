@@ -1,8 +1,8 @@
 package com.dhorowitz.store.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.dhorowitz.store.core.ProductsMapper
 import com.dhorowitz.store.domain.ProductsInteractor
+import com.dhorowitz.store.domain.ProductsPresentationMapper
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Single
@@ -22,7 +22,7 @@ class ProductsViewModelTest {
     lateinit var interactor: ProductsInteractor
 
     @Mock
-    lateinit var mapper: ProductsMapper
+    lateinit var mapper: ProductsPresentationMapper
 
     private val viewModel by lazy { ProductsViewModel(interactor, mapper) }
 

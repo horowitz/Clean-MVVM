@@ -29,7 +29,7 @@ class ProductsActivity : AppCompatActivity() {
     }
 
     private fun showError(failure: Throwable?) {
-        
+
     }
 
     private fun updateProducts(products: List<ProductViewEntity>?) {

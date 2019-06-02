@@ -1,8 +1,8 @@
 package com.dhorowitz.store.domain
 
-import com.dhorowitz.store.core.ProductsMapper
 import com.dhorowitz.store.core.di.IO_SCHEDULER
 import com.dhorowitz.store.core.di.MAIN_THREAD_SCHEDULER
+import com.dhorowitz.store.data.ProductsDomainMapper
 import com.dhorowitz.store.data.ProductsRepository
 import com.dhorowitz.store.domain.model.ProductDomainEntity
 import io.reactivex.Scheduler
@@ -15,7 +15,7 @@ interface ProductsInteractor {
 
 class ProductsInteractorImpl(
     private val repository: ProductsRepository,
-    private val mapper: ProductsMapper,
+    private val mapper: ProductsDomainMapper,
     @Named(IO_SCHEDULER) private val subscribeOn: Scheduler,
     @Named(MAIN_THREAD_SCHEDULER) private val observeOn: Scheduler
 ) : ProductsInteractor {
