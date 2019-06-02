@@ -2,7 +2,7 @@ package com.dhorowitz.store.core.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.dhorowitz.store.presentation.ProductsViewModel
+import com.dhorowitz.store.presentation.product.ProductsViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module

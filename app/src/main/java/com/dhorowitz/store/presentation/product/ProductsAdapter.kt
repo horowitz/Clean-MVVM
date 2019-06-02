@@ -1,4 +1,4 @@
-package com.dhorowitz.store.presentation
+package com.dhorowitz.store.presentation.product
 
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +15,8 @@ class ProductsAdapter
     internal var collection: List<ProductViewEntity> by Delegates.observable(emptyList()) { _, _, _ ->
         notifyDataSetChanged()
     }
+
+    internal var clickListener: (ProductViewEntity) -> Unit = { _ -> }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(parent.inflate(R.layout.row_product))

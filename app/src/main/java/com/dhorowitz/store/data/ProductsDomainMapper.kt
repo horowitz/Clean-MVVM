@@ -1,7 +1,7 @@
 package com.dhorowitz.store.data
 
 import com.dhorowitz.store.domain.model.ProductDomainEntity
-import com.dhorowitz.store.presentation.ProductViewEntity
+import com.dhorowitz.store.presentation.product.ProductViewEntity
 import java.text.NumberFormat
 import java.util.*
 
@@ -10,7 +10,13 @@ const val PRODUCTS_REQUIRED_ERROR = "products are required"
 
 class ProductsDomainMapper{
     fun mapToPresentation(domainEntities: List<ProductDomainEntity>): List<ProductViewEntity> =
-        domainEntities.map { ProductViewEntity(it.code, it.name, formatPrice(it.price)) }
+        domainEntities.map {
+            ProductViewEntity(
+                it.code,
+                it.name,
+                formatPrice(it.price)
+            )
+        }
 
     fun mapToDomain(producstDto: ProductsDto): List<ProductDomainEntity> {
         val products = requireNotNull(producstDto.products, { PRODUCTS_REQUIRED_ERROR })

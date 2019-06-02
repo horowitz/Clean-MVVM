@@ -10,7 +10,7 @@ import com.dhorowitz.store.data.StoreApi
 import com.dhorowitz.store.domain.ProductsInteractor
 import com.dhorowitz.store.domain.ProductsInteractorImpl
 import com.dhorowitz.store.domain.ProductsPresentationMapper
-import com.dhorowitz.store.presentation.ProductsActivity
+import com.dhorowitz.store.presentation.product.ProductsActivity
 import dagger.Binds
 import dagger.Module
 import dagger.Provides

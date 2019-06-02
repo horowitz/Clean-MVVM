@@ -4,7 +4,7 @@ import com.dhorowitz.store.data.ProductsDomainMapper
 import com.dhorowitz.store.data.ProductsDto
 import com.dhorowitz.store.domain.model.ProductDomainEntity
 import com.dhorowitz.store.mock.STORE_MOCK_RESPONSE
-import com.dhorowitz.store.presentation.ProductViewEntity
+import com.dhorowitz.store.presentation.product.ProductViewEntity
 import com.google.gson.Gson
 import org.junit.Assert.assertEquals
 import org.junit.Test

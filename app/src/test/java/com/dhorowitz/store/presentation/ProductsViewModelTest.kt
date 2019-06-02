@@ -3,6 +3,8 @@ package com.dhorowitz.store.presentation
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.dhorowitz.store.domain.ProductsInteractor
 import com.dhorowitz.store.domain.ProductsPresentationMapper
+import com.dhorowitz.store.presentation.product.ProductViewEntity
+import com.dhorowitz.store.presentation.product.ProductsViewModel
 import com.nhaarman.mockito_kotlin.any
 import com.nhaarman.mockito_kotlin.whenever
 import io.reactivex.Single
