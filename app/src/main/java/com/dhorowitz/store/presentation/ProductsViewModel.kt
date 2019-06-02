@@ -15,11 +15,12 @@ class ProductsViewModel @Inject constructor(
     val products = MutableLiveData<List<ProductViewEntity>>()
 
     fun loadProducts() {
-        disposable = productsInteractor.fetchProducts()
+        disposable =
+            productsInteractor.fetchProducts()
             .map { productsMapper.mapToPresentation(it) }
             .subscribeBy(
-                onSuccess = { handleProductsList(it) },
-                onError = { handleFailure(it) }
+                onSuccess = ::handleProductsList,
+                onError = ::handleFailure
             )
 
     }

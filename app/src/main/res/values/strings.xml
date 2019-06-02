@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Store</string>
+    <string name="retry">Retry</string>
+    <string name="generic_failure">An error has occurred</string>
 </resources>
