@@ -1,5 +1,7 @@
 package com.dhorowitz.store.core.di
 
+import com.dhorowitz.store.data.ProductsRepository
+import com.dhorowitz.store.data.ProductsRepositoryImpl
 import com.dhorowitz.store.data.StoreApi
 import dagger.Module
 import dagger.Provides
@@ -13,10 +15,6 @@ private const val BASE_URL = "https://api.myjson.com"
 
 @Module
 class NetworkModule {
-
-    @Provides
-    fun providesStoreApi(retrofit: Retrofit): StoreApi = retrofit.create(StoreApi::class.java)
-
     @Provides
     fun providesRetrofit(okHttpClient: OkHttpClient): Retrofit =
         Retrofit.Builder()
@@ -36,4 +34,10 @@ class NetworkModule {
             .addInterceptor(logging)
             .build()
     }
+
+    @Provides
+    fun providesStoreApi(retrofit: Retrofit): StoreApi = retrofit.create(StoreApi::class.java)
+
+    @Provides
+    fun provideRepository(storeApi: StoreApi): ProductsRepository = ProductsRepositoryImpl(storeApi)
 }

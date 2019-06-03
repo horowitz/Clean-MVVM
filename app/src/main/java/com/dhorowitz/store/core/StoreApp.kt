@@ -18,7 +18,10 @@ class StoreApp : Application(), HasActivityInjector {
     override fun onCreate() {
         super.onCreate()
 
-        DaggerApplicationComponent.create()
+        DaggerApplicationComponent
+            .builder()
+            .application(this)
+            .build()
             .inject(this)
     }
 }

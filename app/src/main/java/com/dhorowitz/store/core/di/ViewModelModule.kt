@@ -2,6 +2,7 @@ package com.dhorowitz.store.core.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.dhorowitz.store.presentation.checkout.CheckoutViewModel
 import com.dhorowitz.store.presentation.product.ProductsViewModel
 import dagger.Binds
 import dagger.MapKey
@@ -12,7 +13,6 @@ import javax.inject.Provider
 import javax.inject.Singleton
 import kotlin.reflect.KClass
 
-@Singleton
 class ViewModelFactory @Inject constructor(private val viewModels: MutableMap<Class<out ViewModel>, Provider<ViewModel>>) :
     ViewModelProvider.Factory {
 
@@ -29,11 +29,4 @@ abstract class ViewModelModule {
 
     @Binds
     internal abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory
-
-    @Binds
-    @IntoMap
-    @ViewModelKey(ProductsViewModel::class)
-    internal abstract fun productsViewModel(viewModel: ProductsViewModel): ViewModel
-
-    //Add more ViewModels here
 }
