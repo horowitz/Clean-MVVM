@@ -14,7 +14,9 @@ import kotlinx.android.synthetic.main.activity_products.*
 import javax.inject.Inject
 
 class ProductsActivity : BaseActivity() {
-    private val TAG = ProductsActivity::class.java.simpleName
+    companion object {
+        private val TAG = ProductsActivity::class.java.simpleName
+    }
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
